@@ -1,5 +1,7 @@
 const router = require('express').Router()
 const {User} = require('../db/models')
+const isAdmin = require('./isAdmin')
+const isValid = require('./isValid')
 module.exports = router
 
 //GET api/users
@@ -51,52 +53,40 @@ router.post('/', async(req, res, next) =>{
   }
 })
 
-router.delete('/:userId', async(req, res, next) =>{
+router.delete('/:userId', isAdmin, async(req, res, next) =>{
   try{
-    if(req.user && req.user.isAdmin){
-      const userId = req.params.userId;
-      const user = await User.findOne({
-        where: {
-          id: userId
-        }
-      })
-      if(user){
-        await user.destroy(req.body);
-        res.sendStatus(204);
-      } else{
-        res.sendStatus(404);
+    const userId = req.params.userId;
+    const user = await User.findOne({
+      where: {
+        id: userId
       }
+    })
+    if(user){
+      await user.destroy(req.body);
+      res.sendStatus(204);
     } else{
-      const err = new Error('Unathorized action');
-      next(err);
+      res.sendStatus(404);
     }
   }catch(err){
     next(err)
   }
 })
 
-router.put('/:userId', async(req, res, next) =>{
+router.put('/:userId', isValid, async(req, res, next) =>{
   try{
-    if(req.user && req.user.isAdmin){
-      const {email, password, googleId, imageUrl} = req.body;
-      const userId = req.params.userId;
-      const user = await User.findOne({
-        where: {
-          id: userId
-        }
-      });
-      if(user){
-        const updatedUser = await user.update({
-          email,
-          password,
-          googleId,
-          imageUrl
-        })
-        res.json(updatedUser);
+    const {password, imageUrl} = req.body;
+    const userId = req.params.userId;
+    const user = await User.findOne({
+      where: {
+        id: userId
       }
-    } else {
-      const err = new Error('Unathorized action');
-      next(err);
+    });
+    if(user){
+      const updatedUser = await user.update({
+        password,
+        imageUrl
+      })
+      res.json(updatedUser);
     }
   }catch(err){
     next(err)
