@@ -54,68 +54,14 @@ async function seed() {
 
   //we are selling food and utensils
   const products = await Promise.all([
-    Product.create({
-      itemName: 'Fork',
-      price: 4,
-      imageUrl:
-        'https://images-na.ssl-images-amazon.com/images/I/71RRthv0TkL._AC_SX450_.jpg',
-      description:
-        'Made from 18/10 stainless steel with extra thick ergonomics handle',
-      category: 'utensils'
-    }),
-    Product.create({
-      itemName: 'Spoon',
-      price: 5,
-      imageUrl:
-        'https://images-na.ssl-images-amazon.com/images/I/51YgAuPhuCL._AC_SL1001_.jpg',
-      description:
-        'Made from stainless steel with extra thick ergonomics handle,Heavy duty and durable',
-      category: 'utensils'
-    }),
-    Product.create({
-      itemName: 'Ladle',
-      price: 12,
-      imageUrl:
-        'https://images-na.ssl-images-amazon.com/images/I/71JHiaXZLWL._AC_SX522_.jpg',
-      description:
-        'Soup ladle has a long extended handle which makes mixing or pouring convenient.',
-      category: 'utensils'
-    }),
-    Product.create({
-      itemName: 'Bowl',
-      price: 30,
-      imageUrl:
-        'https://images-na.ssl-images-amazon.com/images/I/61H1SCHru-L._AC_SL1500_.jpg',
-      description: 'Light weight bowl ideal for making cake or proving bread',
-      category: 'utensils'
-    }),
-    Product.create({
-      itemName: 'Knife',
-      price: 5,
-      imageUrl:
-        'https://images-na.ssl-images-amazon.com/images/I/71aSQjqG5FL._AC_SL1500_.jpg',
-      description:
-        'Made using high-quality stainless steel which ensures long time usage, sturdy structure, rust resistant and durable',
-      category: 'utensils'
-    }),
-    Product.create({
-      itemName: 'Spatula',
-      price: 12,
-      imageUrl:
-        'https://minimalistbaker.com/wp-content/uploads/2016/02/spatula-2.jpg',
-      description:
-        'This metal spatula made of high quality thickened 304 stainless steel to ensure long-lasting use and a easy clean, they wont dent, crack, rust, or chip.',
-      category: 'utensils'
-    }),
     //pasta stuff begins here
     Product.create({
       itemName: 'Farfalle',
-      price: 12,
+      price: 8,
       imageUrl:
         'https://target.scene7.com/is/image/Target/GUEST_d1dae6de-689f-4cfc-ba3f-622cf977bc1e?wid=488&hei=488&fmt=pjpeg',
       description:
-        'Farfalle are a type of pasta commonly known as bow-tie pasta or butterfly pasta. The name is derived from the Italian word farfalle (butterflies). A larger variation of farfalle is known as farfalloni, while the miniature version is called farfalline.',
-      category: 'pasta'
+        'Farfalle are a type of pasta commonly known as bow-tie pasta or butterfly pasta. The name is derived from the Italian word farfalle (butterflies). A larger variation of farfalle is known as farfalloni, while the miniature version is called farfalline.'
     }),
     Product.create({
       itemName: 'Rigatoni',
@@ -123,43 +69,84 @@ async function seed() {
       imageUrl:
         'https://images-na.ssl-images-amazon.com/images/I/71ROhAw7EiL._SX425_.jpg',
       description:
-        'Rigatoni, which comes from the word “rigato” meaning ridged, are short, wide tubes of pasta that have ridges on the outside, but are smooth on the inside. Rigatoni also work well in baked pasta dishes as they can hold on to cheese well. Typically, rigatoni are associated with southern Italian cuisine.',
-      category: 'pasta'
+        'Rigatoni, which comes from the word “rigato” meaning ridged, are short, wide tubes of pasta that have ridges on the outside, but are smooth on the inside. Rigatoni also work well in baked pasta dishes as they can hold on to cheese well. Typically, rigatoni are associated with southern Italian cuisine.'
     }),
     Product.create({
       itemName: 'Penne',
-      price: 12,
+      price: 14,
       imageUrl: 'https://static-assets.boxed.com/1593034386855.jpg',
       description:
-        'Penne is an extruded type of pasta with cylinder-shaped pieces, their ends cut at a bias. Penne is the plural form of the Italian penna (meaning feather but pen as well), deriving from Latin penna (meaning "feather" or "quill"), and is a cognate of the English word pen.',
-      category: 'pasta'
+        'Penne is an extruded type of pasta with cylinder-shaped pieces, their ends cut at a bias. Penne is the plural form of the Italian penna (meaning feather but pen as well), deriving from Latin penna (meaning "feather" or "quill"), and is a cognate of the English word pen.'
     }),
     Product.create({
       itemName: 'Spaghetti',
-      price: 12,
+      price: 5,
       imageUrl:
         'https://images-na.ssl-images-amazon.com/images/I/61bsIABaG9L._SL1200_.jpg',
       description:
-        'Spaghetti is long, thin pasta. Spaghetti is a popular Italian pasta, often served with a tomato sauce sometimes called spaghetti sauce. The Italian word spago means string, and spaghetti is the plural of spago — a description of what spaghetti looks like.',
-      category: 'pasta'
+        'Spaghetti is long, thin pasta. Spaghetti is a popular Italian pasta, often served with a tomato sauce sometimes called spaghetti sauce. The Italian word spago means string, and spaghetti is the plural of spago — a description of what spaghetti looks like.'
     }),
     Product.create({
       itemName: 'Fusilli',
-      price: 12,
+      price: 16,
       imageUrl:
         'https://image.izettle.com/product/1600x1600/eYcTcNtFEeW9Md6_9dA3mQ-Zus6FIk6Eeq0Djk8l9k1Mw.jpeg',
       description:
-        'Fusilli is a spiral or corkscrew shaped pasta. Because of its twists, it has grooves that are good for holding onto sauce. Fusilli pasta were originally developed in Southern Italy by rolling and setting fresh spaghetti around thin rods to dry.',
-      category: 'pasta'
+        'Fusilli is a spiral or corkscrew shaped pasta. Because of its twists, it has grooves that are good for holding onto sauce. Fusilli pasta were originally developed in Southern Italy by rolling and setting fresh spaghetti around thin rods to dry.'
     }),
     Product.create({
       itemName: 'Elbows',
-      price: 12,
+      price: 10,
       imageUrl:
         'https://target.scene7.com/is/image/Target/GUEST_1a6d1299-92ef-43e0-ad60-0f54efcd070b?wid=488&hei=488&fmt=pjpeg',
       description:
-        'Elbow macaroni is one of the most common tube pasta shapes with its short, semicircular shape. The name comes from Italian word maccheroni (the plural form of maccherone). Macaroni pairs well with practically any type of sauce, baked recipes, soups, salads or stir-fry dishes.',
-      category: 'pasta'
+        'Elbow macaroni is one of the most common tube pasta shapes with its short, semicircular shape. The name comes from Italian word maccheroni (the plural form of maccherone). Macaroni pairs well with practically any type of sauce, baked recipes, soups, salads or stir-fry dishes.'
+    }),
+    Product.create({
+      itemName: 'Lasagne',
+      price: 7,
+      imageUrl:
+        'https://www.meijer.com/content/dam/meijer/product/0089/50/5900/06/0089505900061_1_A1C1_0600.png',
+      description:
+        'Lasagne, or the singular lasagna, is an Italian dish made of stacked layers of thin flat pasta alternating with fillings such as ragù (ground meats and tomato sauce) and other vegetables, cheese (which may include ricotta and parmesan), and seasonings and spices such as garlic, oregano and basil.'
+    }),
+    Product.create({
+      itemName: 'Bigotoni',
+      price: 13,
+      imageUrl:
+        'https://pyxis.nymag.com/v1/imgs/526/eda/f95a96e11f775c9f6867b254bf1ee46bc6-27-barilla-bigotoni.rsquare.w700.jpg',
+      description: 'delicious pasta'
+    }),
+    Product.create({
+      itemName: 'Ziti',
+      price: 9,
+      imageUrl: 'https://i.ebayimg.com/images/g/L9MAAOSw3axes4Si/s-l600.jpg',
+      description:
+        'Ziti is an extruded pasta. It is smaller than rigatoni, but larger than mezzani. Ziti may have smooth sides, but the addition of the word rigati (meaning "ridged") denotes lines or ridges on the pasta\'s outer surface'
+    }),
+    Product.create({
+      itemName: 'Rotini',
+      price: 7,
+      imageUrl:
+        'https://target.scene7.com/is/image/Target/GUEST_03cd8b87-c4a2-403e-b2da-92c4e32187ad?wid=488&hei=488&fmt=pjpeg',
+      description:
+        'Rotini are short, corkscrew-like shaped pasta. The name translates from Italian to “small wheels” and the shape originated in Southern Italy. Rotini is recommended to be paired with most sauces, including tomato sauces, oil-based sauces, or cream sauces.'
+    }),
+    Product.create({
+      itemName: 'Cellentani',
+      price: 11,
+      imageUrl:
+        'https://i5.walmartimages.com/asr/35afc132-0fa9-46bc-b90b-565401beb0b9_1.5cf0e0a9f5b6ff4063b853edf6a39e43.jpeg',
+      description:
+        'A delightful corkscrew-shaped pasta, Barilla® Cellentani is as fun to look at as it is to eat. With its tubular center and ridged surface, Cellentani is perfect for a hearty pasta meal, capturing every drop of your favorite sauce and trapping vegetables, meat or fish in every delicious forkful.'
+    }),
+    Product.create({
+      itemName: 'Gemelli',
+      price: 14,
+      imageUrl:
+        'https://images.freshop.com/00076808506433/e35ee6fd2e54f1e0f45f354eee5969c7_large.png',
+      description:
+        'The name derives from the Italian word for "twins". Gemelli are not twin tubes twisted around one another, as they may appear to be, but rather a single s-shaped strand twisted into a spiral.'
     })
   ])
 
