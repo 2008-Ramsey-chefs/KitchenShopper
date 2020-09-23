@@ -1,8 +1,16 @@
 const crypto = require('crypto')
 const Sequelize = require('sequelize')
 const db = require('../db')
-
+//we need full name for tier 2 shipping
 const User = db.define('user', {
+  firstName: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  lastName: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
   email: {
     type: Sequelize.STRING,
     unique: true,

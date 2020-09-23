@@ -16,6 +16,14 @@ const Product = db.define('product', {
       notEmpty: true
     }
   },
+  description: Sequelize.TEXT,
+  category: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
   imageUrl: {
     type: Sequelize.TEXT,
     defaultValue:
