@@ -8,6 +8,12 @@ const Orderproduct = db.define('order-product', {
     validate: {
       min: 0
     }
+  },
+  purchasePrice: {
+    type: Sequelize.INTEGER,
+    validate: {
+      min: 0
+    }
   }
 })
 
