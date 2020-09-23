@@ -9,7 +9,7 @@ const Orderproduct = db.define('order-product', {
       min: 0
     }
   },
-  originalPrice: {
+  purchasePrice: {
     type: Sequelize.INTEGER,
     validate: {
       min: 0
