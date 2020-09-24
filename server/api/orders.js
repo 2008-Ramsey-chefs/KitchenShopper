@@ -17,17 +17,21 @@ const {Order, User, Product, Orderproduct} = require('../db/models')
 // })
 
 //PUT api/orders/cart
-router.get('/cart', async (req, res, next) => {
+router.put('/cart', async (req, res, next) => {
   const lastOrder = await Order.findOne({
+    where: {
+      userId: req.session.passport.user,
+      orderPlaced: false
+    },
     order: [['updatedAt', 'DESC']]
   })
-  // order: [
-  //   ["__createdAt", "DESC"],
-  // ]
-  // const cart = await Order.findOrCreate({where: {
-  //   userId: req.session.passport.user
-  // }})
-  res.send(lastOrder)
+  if (!lastOrder) {
+    const newOrder = await Order.create({
+      userId: req.session.passport.user
+    })
+    res.json(newOrder)
+  }
+  res.json(lastOrder)
 })
 
 module.exports = router
