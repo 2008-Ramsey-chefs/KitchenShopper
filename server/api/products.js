@@ -14,7 +14,6 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   try {
-    console.log('Reached backend')
     const id = req.params.id
     const product = await Product.findOne({where: {id}})
     if (product) {
