@@ -42,8 +42,19 @@ router.get('/:userId', async (req, res, next) => {
 //POST api/users/
 router.post('/', async (req, res, next) => {
   try {
-    const {email, password, googleId, imageUrl} = req.body
+    const {
+      firstName,
+      lastName,
+      address,
+      email,
+      password,
+      googleId,
+      imageUrl
+    } = req.body
     const user = await User.create({
+      firstName,
+      lastName,
+      address,
       email,
       password,
       googleId,
@@ -75,50 +86,24 @@ router.delete('/:userId', isAdmin, async (req, res, next) => {
   }
 })
 
-//PUT api/users/:userId
-router.put('/:userId', isValid, async (req, res, next) => {
-  try {
-    const {password, imageUrl} = req.body
-    const userId = req.params.userId
-    const user = await User.findOne({
-      where: {
-        id: userId
-      }
-    })
-    if (user) {
-      const updatedUser = await user.update({
-        password,
-        imageUrl
-      })
-      res.json(updatedUser)
-    }
-  } catch (err) {
-    next(err)
-  }
-})
-
-//PUT api/users/login
-router.put('/login', async (req, res, next) => {
-  try {
-    const user = await User.findOne({
-      where: {
-        email: req.body.email,
-        password: req.body.password
-      }
-    })
-    if (!user) {
-      res.sendStatus(401)
-    } else {
-      req.session.userId = user.id
-      res.json(user)
-    }
-  } catch (error) {
-    next(error)
-  }
-})
-
-//DELETE api/users/logout
-router.delete('/logout', (req, res) => {
-  delete req.session.userId
-  res.sendStatus(204)
-})
+//PUT api/users/:userId not a tier 1 project
+// router.put('/:userId/updatepassword', isValid, async (req, res, next) => {
+//   try {
+//     const {password, imageUrl} = req.body
+//     const userId = req.params.userId
+//     const user = await User.findOne({
+//       where: {
+//         id: userId
+//       }
+//     })
+//     if (user) {
+//       const updatedUser = await user.update({
+//         password,
+//         imageUrl
+//       })
+//       res.json(updatedUser)
+//     }
+//   } catch (err) {
+//     next(err)
+//   }
+// })
