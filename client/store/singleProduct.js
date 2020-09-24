@@ -19,7 +19,6 @@ export const fetchSingleProduct = id => {
   return async dispatch => {
     try {
       const {data: product} = await axios.get(`/api/products/${id}`)
-      console.log('Retrieved product in thunk: ', product)
       dispatch(getProduct(product))
     } catch (error) {
       console.log(error)
@@ -30,10 +29,8 @@ export const fetchSingleProduct = id => {
 const singleProductReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_PRODUCT:
-      console.log('store: (sub-reducer) ', action.product)
       return action.product
     default:
-      console.log('default state')
       return state
   }
 }
