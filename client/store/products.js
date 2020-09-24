@@ -1,5 +1,4 @@
 import axios from 'axios'
-import history from '../history'
 
 //INITIAL STATE
 const initialState = []
@@ -20,7 +19,6 @@ export const fetchProducts = () => {
   return async dispatch => {
     try {
       const {data: products} = await axios.get('/api/products')
-      console.log('inside think')
       dispatch(getProducts(products))
     } catch (error) {
       console.log(error)
