@@ -9,7 +9,7 @@ export class SingleProduct extends React.Component {
     this.props.getSingleProduct(id)
   }
   render() {
-    let product = this.props.product
+    const product = this.props.product
     if (!product) {
       return <div>The product you're looking for does not exist</div>
     }
