@@ -20,14 +20,14 @@ const {Order, User, Product, Orderproduct} = require('../db/models')
 router.put('/createcart', async (req, res, next) => {
   const lastOrder = await Order.findOne({
     where: {
-      userId: req.session.passport.user,
+      userId: 1, //switch this to req.session.passport.user when completed route
       orderPlaced: false
     },
     order: [['updatedAt', 'DESC']]
   })
   if (!lastOrder) {
     const newOrder = await Order.create({
-      userId: req.session.passport.user
+      userId: 1 //switch this to req.session.passport.user when completed route
     })
     res.json(newOrder)
   }
@@ -82,9 +82,32 @@ router.put('/:itemId', async (req, res, next) => {
 })
 
 //PUT api/orders/:itemId/decrement
-router.put('/:itemId/decrement', async (req, res, next) => {})
+router.put('/:itemId/decrement', async (req, res, next) => {
+  let itemNum = req.params.itemId
+  const lastOrder = await Order.findOne({
+    where: {
+      userId: 1, //switch this to req.session.passport.user when completed route
+      orderPlaced: false
+    },
+    order: [['updatedAt', 'DESC']]
+  })
+  const findItem = await Orderproduct.findOne({
+    where: {
+      orderId: lastOrder.id,
+      productId: itemNum
+    }
+  })
+  if (findItem.quantity === 1) {
+    await findItem.destroy()
+    return res.sendStatus(200)
+  }
+  await findItem.decrement('quantity')
+  res.sendStatus(200)
+})
 
-//DELETE api/order/:itemId
-router.delete('/:itemId', async (req, res, next) => {})
+// //DELETE api/order/:itemId
+// router.delete('/:itemId', async (req, res, next) => {
+
+// })
 
 module.exports = router
