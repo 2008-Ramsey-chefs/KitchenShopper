@@ -27,7 +27,7 @@ router.put('/createcart', async (req, res, next) => {
   })
   if (!lastOrder) {
     const newOrder = await Order.create({
-      userId: req.session.passport.user, //switch this to req.session.passport.user when completed route
+      userId: req.session.passport.user //switch this to req.session.passport.user when completed route
     })
     res.json(newOrder)
   }
@@ -54,6 +54,7 @@ router.get('/cart', async (req, res, next) => {
 //PUT api/orders/:itemId
 router.put('/:itemId', async (req, res, next) => {
   let itemNum = req.params.itemId
+  // console.log(itemNum)
   const lastOrder = await Order.findOne({
     where: {
       userId: req.session.passport.user, //switch this to req.session.passport.user when completed route

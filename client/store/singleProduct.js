@@ -26,6 +26,16 @@ export const fetchSingleProduct = id => {
   }
 }
 
+export const addProduct = id => {
+  return async dispatch => {
+    try {
+      const {data: product} = await axios.put(`/api/orders/${id}`)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
+
 const singleProductReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_PRODUCT:
