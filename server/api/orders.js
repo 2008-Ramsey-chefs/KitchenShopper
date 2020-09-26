@@ -21,14 +21,14 @@ router.put('/createcart', async (req, res, next) => {
   try {
     const lastOrder = await Order.findOne({
       where: {
-        userId: req.session.passport.user, //switch this to req.session.passport.user when completed route
+        userId: req.session.passport.user,
         orderPlaced: false
       },
       order: [['updatedAt', 'DESC']]
     })
     if (!lastOrder) {
       const newOrder = await Order.create({
-        userId: req.session.passport.user //switch this to req.session.passport.user when completed route
+        userId: req.session.passport.user
       })
       res.json(newOrder)
     }
@@ -42,7 +42,7 @@ router.put('/createcart', async (req, res, next) => {
 router.get('/cart', async (req, res, next) => {
   const lastOrder = await Order.findOne({
     where: {
-      userId: req.session.passport.user, //switch this to req.session.passport.user when completed route
+      userId: req.session.passport.user,
       orderPlaced: false
     },
     order: [['updatedAt', 'DESC']]
@@ -58,10 +58,9 @@ router.get('/cart', async (req, res, next) => {
 //PUT api/orders/:itemId
 router.put('/:itemId', async (req, res, next) => {
   let itemNum = req.params.itemId
-  // console.log(itemNum)
   const lastOrder = await Order.findOne({
     where: {
-      userId: req.session.passport.user, //switch this to req.session.passport.user when completed route
+      userId: req.session.passport.user,
       orderPlaced: false
     },
     order: [['updatedAt', 'DESC']]
@@ -91,7 +90,7 @@ router.put('/:itemId/decrement', async (req, res, next) => {
   let itemNum = req.params.itemId
   const lastOrder = await Order.findOne({
     where: {
-      userId: req.session.passport.user, //switch this to req.session.passport.user when completed route
+      userId: req.session.passport.user,
       orderPlaced: false
     },
     order: [['updatedAt', 'DESC']]
