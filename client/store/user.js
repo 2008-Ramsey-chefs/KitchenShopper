@@ -53,6 +53,7 @@ export const auth = (
 
   try {
     dispatch(getUser(res.data))
+    await axios.put('/api/orders/createcart')
     history.push('/home')
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)

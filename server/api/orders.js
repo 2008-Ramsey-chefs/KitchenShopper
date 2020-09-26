@@ -18,20 +18,24 @@ const {Order, User, Product, Orderproduct} = require('../db/models')
 
 //PUT api/orders/createcart
 router.put('/createcart', async (req, res, next) => {
-  const lastOrder = await Order.findOne({
-    where: {
-      userId: req.session.passport.user, //switch this to req.session.passport.user when completed route
-      orderPlaced: false
-    },
-    order: [['updatedAt', 'DESC']]
-  })
-  if (!lastOrder) {
-    const newOrder = await Order.create({
-      userId: req.session.passport.user //switch this to req.session.passport.user when completed route
+  try {
+    const lastOrder = await Order.findOne({
+      where: {
+        userId: req.session.passport.user, //switch this to req.session.passport.user when completed route
+        orderPlaced: false
+      },
+      order: [['updatedAt', 'DESC']]
     })
-    res.json(newOrder)
+    if (!lastOrder) {
+      const newOrder = await Order.create({
+        userId: req.session.passport.user //switch this to req.session.passport.user when completed route
+      })
+      res.json(newOrder)
+    }
+    res.json(lastOrder)
+  } catch (error) {
+    console.error(error)
   }
-  res.json(lastOrder)
 })
 
 //GET api/orders/cart
