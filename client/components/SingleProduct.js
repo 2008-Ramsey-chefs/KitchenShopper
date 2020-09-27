@@ -19,7 +19,6 @@ export class SingleProduct extends React.Component {
     this.props.getGuestCart(this.props.product)
   }
   render() {
-    console.log('console log for user id', this.props.user.id)
     const product = this.props.product
     if (!product) {
       return <div>The product you're looking for does not exist</div>
