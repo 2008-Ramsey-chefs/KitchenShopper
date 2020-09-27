@@ -23,7 +23,6 @@ export class Cart extends React.Component {
 
   render() {
     const cart = this.props.cart
-    console.log('cart in render -->', cart)
     return (
       <div>
         <h1>YOUR CART</h1>
