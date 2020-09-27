@@ -25,7 +25,6 @@ export class GuestCart extends React.Component {
           {products.map(product => (
             <div key={product.id}>
               <div>NAME: {product.itemName}</div>
-              <div>QUANTITY: {product.quantity}</div>
               <div>PRICE: ${product.price}</div>
               <button
                 onClick={evt => this.handleAdd(evt, product)}
@@ -34,6 +33,7 @@ export class GuestCart extends React.Component {
               >
                 +
               </button>
+              <span> {product.quantity} </span>
               <button
                 onClick={evt => this.handleDeletion(evt, product)}
                 type="submit"
