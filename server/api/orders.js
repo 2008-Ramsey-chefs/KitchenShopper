@@ -138,10 +138,38 @@ router.put('/:itemId/decrement', async (req, res, next) => {
   })
   if (findItem.quantity === 1) {
     await findItem.destroy()
-    return res.sendStatus(200)
+    const newCart = await Order.findOne({
+      where: {
+        userId: req.session.passport.user,
+        orderPlaced: false
+      },
+      include: [
+        {
+          model: Product,
+          attributes: ['id', 'itemName', 'price']
+        }
+      ],
+      order: [['updatedAt', 'DESC']]
+    })
+    res.send(newCart)
+  } else {
+    await findItem.decrement('quantity')
+    const newCart = await Order.findOne({
+      where: {
+        userId: req.session.passport.user,
+        orderPlaced: false
+      },
+      include: [
+        {
+          model: Product,
+          attributes: ['id', 'itemName', 'price']
+        }
+      ],
+      order: [['updatedAt', 'DESC']]
+    })
+    console.log('our updatedCart ', newCart.products)
+    res.send(newCart)
   }
-  await findItem.decrement('quantity')
-  res.sendStatus(200)
 })
 
 module.exports = router

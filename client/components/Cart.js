@@ -1,18 +1,21 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchCart, addQuantity} from '../store/cart'
-import {fetchProducts} from '../store/products'
+import {fetchCart, addQuantity, removeQuantity} from '../store/cart'
 
 export class Cart extends React.Component {
   constructor() {
     super()
     this.handleAddition = this.handleAddition.bind(this)
+    this.handleDeletion = this.handleDeletion.bind(this)
   }
 
   componentDidMount() {
     this.props.getCart()
   }
-
+  handleDeletion(evt, id) {
+    evt.preventDefault()
+    this.props.removeQuantity(id)
+  }
   handleAddition(evt, id) {
     evt.preventDefault()
     this.props.addQuantity(id)
@@ -20,7 +23,7 @@ export class Cart extends React.Component {
 
   render() {
     const cart = this.props.cart
-
+    console.log('cart in render -->', cart)
     return (
       <div>
         <h1>YOUR CART</h1>
@@ -39,7 +42,11 @@ export class Cart extends React.Component {
                   >
                     +
                   </button>
-                  <button type="submit" className="cart-button">
+                  <button
+                    type="submit"
+                    onClick={evt => this.handleDeletion(evt, product.id)}
+                    className="cart-button"
+                  >
                     -
                   </button>
                 </div>
@@ -58,7 +65,8 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     getCart: () => dispatch(fetchCart()),
-    addQuantity: id => dispatch(addQuantity(id))
+    addQuantity: id => dispatch(addQuantity(id)),
+    removeQuantity: id => dispatch(removeQuantity(id))
   }
 }
 export default connect(mapState, mapDispatch)(Cart)
