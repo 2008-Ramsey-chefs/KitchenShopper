@@ -38,6 +38,23 @@ router.put('/createcart', async (req, res, next) => {
   }
 })
 
+// //working!!!!!!!!__--------------GET api/orders/cart
+// router.get('/cart', async (req, res, next) => {
+//   const lastOrder = await Order.findOne({
+//     where: {
+//       userId: req.session.passport.user,
+//       orderPlaced: false
+//     },
+//     order: [['updatedAt', 'DESC']]
+//   })
+//   const cartItems = await Orderproduct.findAll({
+//     where: {
+//       orderId: lastOrder.id
+//     }
+//   })
+//   res.send(cartItems)
+// })
+
 //GET api/orders/cart
 router.get('/cart', async (req, res, next) => {
   const lastOrder = await Order.findOne({
@@ -45,17 +62,18 @@ router.get('/cart', async (req, res, next) => {
       userId: req.session.passport.user,
       orderPlaced: false
     },
+    include: [
+      {
+        model: Product,
+        attributes: ['id', 'itemName', 'price']
+      }
+    ],
     order: [['updatedAt', 'DESC']]
   })
-  const cartItems = await Orderproduct.findAll({
-    where: {
-      orderId: lastOrder.id
-    }
-  })
-  res.send(cartItems)
+  res.send(lastOrder)
 })
 
-//PUT api/orders/:itemId
+//PUT api/orders/:itemId (when you add item in single product view and increment quantity on cart at checkout)
 router.put('/:itemId', async (req, res, next) => {
   let itemNum = req.params.itemId
   const lastOrder = await Order.findOne({
@@ -72,9 +90,26 @@ router.put('/:itemId', async (req, res, next) => {
     }
   })
   if (findItem) {
+    //increments the quantity
     await findItem.increment('quantity')
-    res.sendStatus(200)
+    //fetching the updated cart with the new quantity
+    const updatedCart = await Order.findOne({
+      where: {
+        userId: req.session.passport.user,
+        orderPlaced: false
+      },
+      include: [
+        {
+          model: Product,
+          attributes: ['id', 'itemName', 'price']
+        }
+      ],
+      order: [['updatedAt', 'DESC']]
+    })
+    //here, we are returning a cart to get the updated(quantity) cart in the thunk
+    res.send(updatedCart)
   } else {
+    //adds to cart with quantity(defaults to 1).
     let newItem = await Orderproduct.findOrCreate({
       where: {
         orderId: lastOrder.id,
