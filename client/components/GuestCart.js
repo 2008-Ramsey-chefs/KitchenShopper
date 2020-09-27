@@ -1,23 +1,46 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {addGuestCart, minusGuestCart} from '../store/guestCart'
 
 export class GuestCart extends React.Component {
   constructor() {
     super()
+    this.handleAdd = this.handleAdd.bind(this)
+    this.handleDeletion = this.handleDeletion.bind(this)
   }
-  componentDidMount() {}
+  handleAdd(evt, product) {
+    evt.preventDefault()
+    this.props.addCart(product)
+  }
+  handleDeletion(evt, product) {
+    evt.preventDefault()
+    this.props.reduceCart(product)
+  }
   render() {
     const products = Object.values(this.props.cart)
     if (this.props.cart) {
       return (
-        <div className="cart-container">
-          guest cart
+        <div id="cart-container">
+          <h1>Guest Cart</h1>
           {products.map(product => (
             <div key={product.id}>
-              <div> {product.itemName}</div>
-              <div>{product.quantity}</div>
-              <img src={product.imageUrl} />
-              <div>{product.price}</div>
+              <div>NAME: {product.itemName}</div>
+              <div>QUANTITY: {product.quantity}</div>
+              <div>PRICE: ${product.price}</div>
+              <button
+                onClick={evt => this.handleAdd(evt, product)}
+                type="submit"
+                className="cart-button"
+              >
+                +
+              </button>
+              <button
+                onClick={evt => this.handleDeletion(evt, product)}
+                type="submit"
+                className="cart-button"
+              >
+                -
+              </button>
             </div>
           ))}
           <button>check out</button>
@@ -33,4 +56,11 @@ const mapState = state => {
   }
 }
 
-export default connect(mapState)(GuestCart)
+const mapDispatch = dispatch => {
+  return {
+    addCart: product => dispatch(addGuestCart(product)),
+    reduceCart: product => dispatch(minusGuestCart(product))
+  }
+}
+
+export default connect(mapState, mapDispatch)(GuestCart)

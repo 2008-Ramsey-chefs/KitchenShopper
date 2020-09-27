@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchSingleProduct, addProduct} from '../store/singleProduct'
-import {getGuestCart} from '../store/guestCart'
+import {addGuestCart} from '../store/guestCart'
 
 export class SingleProduct extends React.Component {
   componentDidMount() {
@@ -16,7 +16,7 @@ export class SingleProduct extends React.Component {
   }
   guestHandleSubmit(evt) {
     evt.preventDefault()
-    this.props.getGuestCart(this.props.product)
+    this.props.addGuestCart(this.props.product)
   }
   render() {
     const product = this.props.product
@@ -58,7 +58,7 @@ const mapDispatch = dispatch => {
   return {
     getSingleProduct: id => dispatch(fetchSingleProduct(id)),
     addProduct: id => dispatch(addProduct(id)),
-    getGuestCart: product => dispatch(getGuestCart(product))
+    addGuestCart: product => dispatch(addGuestCart(product))
   }
 }
 
