@@ -7,18 +7,20 @@ export class GuestCart extends React.Component {
   }
   componentDidMount() {}
   render() {
-    console.log('this is our cart ', this.props.cart)
+    const products = Object.values(this.props.cart)
     if (this.props.cart) {
       return (
-        <div>
+        <div className="cart-container">
           guest cart
-          {this.props.cart.map(product => (
+          {products.map(product => (
             <div key={product.id}>
-              <div>NAME: {product.itemName}</div>
-              {/* <div>QUANTITY: {product['order-product'].quantity}</div> */}
-              <div>PRICE: ${product.price}</div>
+              <div> {product.itemName}</div>
+              <div>{product.quantity}</div>
+              <img src={product.imageUrl} />
+              <div>{product.price}</div>
             </div>
           ))}
+          <button>check out</button>
         </div>
       )
     }
