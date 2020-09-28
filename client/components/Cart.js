@@ -23,11 +23,17 @@ export class Cart extends React.Component {
 
   render() {
     const cart = this.props.cart
+    if (cart.products === undefined) cart.products = []
+    const totalPrice = cart.products.reduce(
+      (acc, product) => acc + product['order-product'].quantity * product.price,
+      0
+    )
+
     return (
       <div>
         <h1>Shopping Cart</h1>
         <div id="cart-container">
-          {cart.length === 0
+          {cart.products.length === 0
             ? 'There are no items in your cart'
             : cart.products.map(product => (
                 <div key={product.id}>
@@ -50,6 +56,7 @@ export class Cart extends React.Component {
                   </button>
                 </div>
               ))}
+          <div>Estimated Total: ${totalPrice}</div>
           <button className="checkout-button" type="submit">
             Checkout
           </button>
