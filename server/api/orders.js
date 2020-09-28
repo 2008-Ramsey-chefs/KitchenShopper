@@ -1,6 +1,21 @@
 const router = require('express').Router()
 const {Order, User, Product, Orderproduct} = require('../db/models')
 
+// /api/orders/checkout
+router.put('/checkout', async (req, res, next) => {
+  const lastOrder = await Order.findOne({
+    where: {
+      userId: req.session.passport.user,
+      orderPlaced: false
+    },
+    order: [['updatedAt', 'DESC']]
+  })
+  await lastOrder.update({
+    orderPlaced: true
+  })
+  res.sendStatus(200)
+})
+
 //PUT api/orders/createcart
 router.put('/createcart', async (req, res, next) => {
   try {

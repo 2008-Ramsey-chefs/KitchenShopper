@@ -47,6 +47,16 @@ export const addQuantity = id => {
   }
 }
 
+export const updateOrder = () => {
+  return async dispatch => {
+    try {
+      await axios.put('/api/orders/checkout')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_CART:
