@@ -1,21 +1,6 @@
 const router = require('express').Router()
 const {Order, User, Product, Orderproduct} = require('../db/models')
 
-//GET /api/orders/
-// router.get('/', async (req, res, next) =>{
-//   const order = await Order.findOne({
-//     where: {
-//       userId: req.session.passport.user
-//     }
-//   })
-//   const cart = await Orderproduct.findAll({
-//     where: {
-//       orderId: order.id
-//     },
-//   })
-//   res.json(cart)
-// })
-
 //PUT api/orders/createcart
 router.put('/createcart', async (req, res, next) => {
   try {
@@ -37,23 +22,6 @@ router.put('/createcart', async (req, res, next) => {
     console.error(error)
   }
 })
-
-// //working!!!!!!!!__--------------GET api/orders/cart
-// router.get('/cart', async (req, res, next) => {
-//   const lastOrder = await Order.findOne({
-//     where: {
-//       userId: req.session.passport.user,
-//       orderPlaced: false
-//     },
-//     order: [['updatedAt', 'DESC']]
-//   })
-//   const cartItems = await Orderproduct.findAll({
-//     where: {
-//       orderId: lastOrder.id
-//     }
-//   })
-//   res.send(cartItems)
-// })
 
 //GET api/orders/cart
 router.get('/cart', async (req, res, next) => {
