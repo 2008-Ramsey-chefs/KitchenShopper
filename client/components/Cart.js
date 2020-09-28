@@ -25,14 +25,13 @@ export class Cart extends React.Component {
     const cart = this.props.cart
     return (
       <div>
-        <h1>YOUR CART</h1>
+        <h1>Shopping Cart</h1>
         <div id="cart-container">
           {cart.length === 0
             ? 'There are no items in your cart'
             : cart.products.map(product => (
                 <div key={product.id}>
                   <div>NAME: {product.itemName}</div>
-                  <div>QUANTITY: {product['order-product'].quantity}</div>
                   <div>PRICE: ${product.price}</div>
                   <button
                     onClick={evt => this.handleAddition(evt, product.id)}
@@ -41,6 +40,7 @@ export class Cart extends React.Component {
                   >
                     +
                   </button>
+                  <span> {product['order-product'].quantity} </span>
                   <button
                     type="submit"
                     onClick={evt => this.handleDeletion(evt, product.id)}
@@ -50,7 +50,9 @@ export class Cart extends React.Component {
                   </button>
                 </div>
               ))}
-          <button type="submit">Checkout</button>
+          <button className="checkout-button" type="submit">
+            Checkout
+          </button>
         </div>
       </div>
     )

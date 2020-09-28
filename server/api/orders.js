@@ -167,7 +167,6 @@ router.put('/:itemId/decrement', async (req, res, next) => {
       ],
       order: [['updatedAt', 'DESC']]
     })
-    console.log('our updatedCart ', newCart.products)
     res.send(newCart)
   }
 })

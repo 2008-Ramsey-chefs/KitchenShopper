@@ -25,23 +25,27 @@ export class SingleProduct extends React.Component {
       // this if a user is logged in.
     } else if (this.props.user.id) {
       return (
-        <div key={product.id}>
+        <div id="single-product-container" key={product.id}>
           <img src={product.imageUrl} />
           <div>NAME: {product.itemName}</div>
           <div>PRICE: ${product.price}</div>
           <div>DESCRIPTION: {product.description}</div>
-          <button onClick={this.handleSubmit}>Add to Cart</button>
+          <button type="submit" onClick={this.handleSubmit}>
+            Add to Cart
+          </button>
         </div>
       )
     } else {
       //this is if they are a guest.
       return (
-        <div key={product.id}>
+        <div id="single-product-container" key={product.id}>
           <img src={product.imageUrl} />
           <div>NAME: {product.itemName}</div>
           <div>PRICE: ${product.price}</div>
           <div>DESCRIPTION: {product.description}</div>
-          <button onClick={this.guestHandleSubmit}>Add to Cart</button>
+          <button type="submit" onClick={this.guestHandleSubmit}>
+            Add to Cart
+          </button>
         </div>
       )
     }

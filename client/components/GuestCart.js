@@ -21,11 +21,10 @@ export class GuestCart extends React.Component {
     if (this.props.cart) {
       return (
         <div id="cart-container">
-          <h1>Guest Cart</h1>
+          <h1>Shopping Cart</h1>
           {products.map(product => (
             <div key={product.id}>
               <div>NAME: {product.itemName}</div>
-              <div>QUANTITY: {product.quantity}</div>
               <div>PRICE: ${product.price}</div>
               <button
                 onClick={evt => this.handleAdd(evt, product)}
@@ -34,6 +33,7 @@ export class GuestCart extends React.Component {
               >
                 +
               </button>
+              <span> {product.quantity} </span>
               <button
                 onClick={evt => this.handleDeletion(evt, product)}
                 type="submit"
@@ -43,7 +43,9 @@ export class GuestCart extends React.Component {
               </button>
             </div>
           ))}
-          <button>check out</button>
+          <button type="submit" className="checkout-button">
+            Checkout
+          </button>
         </div>
       )
     }

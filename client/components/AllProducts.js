@@ -14,7 +14,6 @@ export class AllProducts extends React.Component {
   render() {
     return (
       <div>
-        <h1>BOB PASTA STORE</h1>
         <div id="product-container">
           {this.props.products.length === 0
             ? 'There are no products here!'

@@ -74,7 +74,8 @@ async function seed() {
     Product.create({
       itemName: 'Penne',
       price: 14,
-      imageUrl: 'https://static-assets.boxed.com/1593034386855.jpg',
+      imageUrl:
+        'https://target.scene7.com/is/image/Target/GUEST_663ffed8-443b-4012-b3f2-e15f728e4152?wid=488&hei=488&fmt=pjpeg',
       description:
         'Penne is an extruded type of pasta with cylinder-shaped pieces, their ends cut at a bias. Penne is the plural form of the Italian penna (meaning feather but pen as well), deriving from Latin penna (meaning "feather" or "quill"), and is a cognate of the English word pen.'
     }),
@@ -120,7 +121,8 @@ async function seed() {
     Product.create({
       itemName: 'Ziti',
       price: 9,
-      imageUrl: 'https://i.ebayimg.com/images/g/L9MAAOSw3axes4Si/s-l600.jpg',
+      imageUrl:
+        'https://i5.walmartimages.com/asr/249b76f0-9f89-4797-aa7b-75488b08bc55_1.4ed2bb901f100b631264464169dff38b.jpeg?odnWidth=612&odnHeight=612&odnBg=ffffff',
       description:
         'Ziti is an extruded pasta. It is smaller than rigatoni, but larger than mezzani. Ziti may have smooth sides, but the addition of the word rigati (meaning "ridged") denotes lines or ridges on the pasta\'s outer surface'
     }),
