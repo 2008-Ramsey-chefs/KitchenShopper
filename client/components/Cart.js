@@ -40,19 +40,19 @@ export class Cart extends React.Component {
                   <div>NAME: {product.itemName}</div>
                   <div>PRICE: ${product.price}</div>
                   <button
-                    onClick={evt => this.handleAddition(evt, product.id)}
-                    type="submit"
-                    className="cart-button"
-                  >
-                    +
-                  </button>
-                  <span> {product['order-product'].quantity} </span>
-                  <button
                     type="submit"
                     onClick={evt => this.handleDeletion(evt, product.id)}
                     className="cart-button"
                   >
                     -
+                  </button>
+                  <span> {product['order-product'].quantity} </span>
+                  <button
+                    onClick={evt => this.handleAddition(evt, product.id)}
+                    type="submit"
+                    className="cart-button"
+                  >
+                    +
                   </button>
                 </div>
               ))}
