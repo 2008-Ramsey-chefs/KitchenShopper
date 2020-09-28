@@ -25,7 +25,7 @@ export class Cart extends React.Component {
     const cart = this.props.cart
     return (
       <div>
-        <h1>YOUR CART</h1>
+        <h1>Shopping Cart</h1>
         <div id="cart-container">
           {cart.length === 0
             ? 'There are no items in your cart'
@@ -50,7 +50,9 @@ export class Cart extends React.Component {
                   </button>
                 </div>
               ))}
-          <button type="submit">Checkout</button>
+          <button className="checkout-button" type="submit">
+            Checkout
+          </button>
         </div>
       </div>
     )
