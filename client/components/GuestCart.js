@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {addGuestCart, minusGuestCart} from '../store/guestCart'
+import {Link} from 'react-router-dom'
 
 export class GuestCart extends React.Component {
   constructor() {
@@ -51,9 +52,11 @@ export class GuestCart extends React.Component {
                 </div>
               ))}
           <div>Estimated Total: ${totalPrice}</div>
-          <button type="submit" className="checkout-button">
-            Checkout
-          </button>
+          <Link to="/billingPage">
+            <button type="submit" className="checkout-button">
+              Checkout
+            </button>
+          </Link>
         </div>
       )
     }

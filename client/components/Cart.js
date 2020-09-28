@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchCart, addQuantity, removeQuantity} from '../store/cart'
+import {Link} from 'react-router-dom'
 
 export class Cart extends React.Component {
   constructor() {
@@ -57,9 +58,11 @@ export class Cart extends React.Component {
                 </div>
               ))}
           <div>Estimated Total: ${totalPrice}</div>
-          <button className="checkout-button" type="submit">
-            Checkout
-          </button>
+          <Link to="/billingPage">
+            <button className="checkout-button" type="submit">
+              Checkout
+            </button>
+          </Link>
         </div>
       </div>
     )
