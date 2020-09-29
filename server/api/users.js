@@ -86,7 +86,7 @@ router.delete('/:userId', isAdmin, async (req, res, next) => {
 })
 
 //PUT api/users/:userId
-router.put('/:userId', isValid, async (req, res, next) => {
+router.put('/:userId', async (req, res, next) => {
   try {
     const {password, imageUrl} = req.body
     const userId = req.params.userId
