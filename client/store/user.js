@@ -24,6 +24,7 @@ const removeUser = () => ({type: REMOVE_USER})
 export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me')
+    await axios.put('/api/orders/createcart')
     dispatch(getUser(res.data || defaultUser))
   } catch (err) {
     console.error(err)
@@ -53,7 +54,7 @@ export const auth = (
 
   try {
     dispatch(getUser(res.data))
-    await axios.put('/api/orders/createcart')
+
     history.push('/home')
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
