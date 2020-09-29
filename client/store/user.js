@@ -53,6 +53,7 @@ export const auth = (
   }
 
   try {
+    await axios.put('/api/orders/createcart')
     dispatch(getUser(res.data))
 
     history.push('/home')
