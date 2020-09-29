@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchCart, addQuantity, removeQuantity} from '../store/cart'
+import {Link} from 'react-router-dom'
 
 export class Cart extends React.Component {
   constructor() {
@@ -23,24 +24,22 @@ export class Cart extends React.Component {
 
   render() {
     const cart = this.props.cart
+    if (cart.products === undefined) cart.products = []
+    const totalPrice = cart.products.reduce(
+      (acc, product) => acc + product['order-product'].quantity * product.price,
+      0
+    )
+
     return (
       <div>
         <h1>Shopping Cart</h1>
         <div id="cart-container">
-          {cart.length === 0
+          {cart.products.length === 0
             ? 'There are no items in your cart'
             : cart.products.map(product => (
                 <div key={product.id}>
                   <div>NAME: {product.itemName}</div>
                   <div>PRICE: ${product.price}</div>
-                  <button
-                    onClick={evt => this.handleAddition(evt, product.id)}
-                    type="submit"
-                    className="cart-button"
-                  >
-                    +
-                  </button>
-                  <span> {product['order-product'].quantity} </span>
                   <button
                     type="submit"
                     onClick={evt => this.handleDeletion(evt, product.id)}
@@ -48,11 +47,22 @@ export class Cart extends React.Component {
                   >
                     -
                   </button>
+                  <span> {product['order-product'].quantity} </span>
+                  <button
+                    onClick={evt => this.handleAddition(evt, product.id)}
+                    type="submit"
+                    className="cart-button"
+                  >
+                    +
+                  </button>
                 </div>
               ))}
-          <button className="checkout-button" type="submit">
-            Checkout
-          </button>
+          <div>Estimated Total: ${totalPrice}</div>
+          <Link to="/billingPage">
+            <button className="checkout-button" type="submit">
+              Checkout
+            </button>
+          </Link>
         </div>
       </div>
     )
