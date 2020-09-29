@@ -4,6 +4,7 @@ const {Order, User, Product, Orderproduct} = require('../db/models')
 //PUT api/orders/createcart
 router.put('/createcart', async (req, res, next) => {
   try {
+    console.log('trying to create cart')
     const lastOrder = await Order.findOne({
       where: {
         userId: req.session.passport.user,
