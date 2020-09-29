@@ -51,6 +51,8 @@ export const updateOrder = () => {
   return async dispatch => {
     try {
       await axios.put('/api/orders/checkout')
+      //creating another cart after checkout
+      await axios.put('/api/orders/createcart')
     } catch (error) {
       console.log(error)
     }
