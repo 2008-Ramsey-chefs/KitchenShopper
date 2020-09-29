@@ -8,9 +8,14 @@ const adapter = new Adapter()
 enzyme.configure({adapter})
 
 describe('GuestCart', () => {
-  let GuestCart
+  let guestCart
 
+  let propCart = {}
   beforeEach(() => {
-    // GuestCart = shallow()
+    guestCart = shallow(<GuestCart cart={propCart} />)
+  })
+
+  it('renders the correct title in an h1', () => {
+    expect(guestCart.find('h1').text()).to.be.equal('Guest Shopping Cart')
   })
 })
