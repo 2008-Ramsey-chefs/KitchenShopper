@@ -33,6 +33,23 @@ export class SingleProduct extends React.Component {
           <button type="submit" onClick={this.handleSubmit}>
             Add to Cart
           </button>
+          <span>
+            <button
+              type="submit"
+              onClick={evt => this.handleDeletion(evt, product.id)}
+              className="cart-button"
+            >
+              -
+            </button>
+            {/* <span> {product['order-product'].quantity} </span> */}
+            <button
+              onClick={evt => this.handleAddition(evt, product.id)}
+              type="submit"
+              className="cart-button"
+            >
+              +
+            </button>
+          </span>
         </div>
       )
     } else {
@@ -46,6 +63,23 @@ export class SingleProduct extends React.Component {
           <button type="submit" onClick={this.guestHandleSubmit}>
             Add to Cart
           </button>
+          <span>
+            <button
+              type="submit"
+              onClick={evt => this.handleDeletion(evt, product.id)}
+              className="cart-button"
+            >
+              -
+            </button>
+            {/* <span> {product['order-product'].quantity} </span> */}
+            <button
+              onClick={evt => this.handleAddition(evt, product.id)}
+              type="submit"
+              className="cart-button"
+            >
+              +
+            </button>
+          </span>
         </div>
       )
     }
