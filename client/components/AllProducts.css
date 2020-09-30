@@ -1,0 +1,15 @@
+#body {
+  background-image: url('../../public/background.jpg');
+}
+
+#name {
+  color: black;
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+#price {
+  color: #343deb;
+  font-weight: bold;
+  font-size: 15px;
+}

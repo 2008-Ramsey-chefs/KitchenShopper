@@ -1,0 +1,63 @@
+#login {
+  border: 1px solid gray;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto; /* <--- */
+  display: table;
+}
+
+.loginBtn {
+  margin-top: 35px;
+  font-size: 15px;
+  background-color: white;
+  color: black;
+  border: 2px solid #16730b;
+  cursor: pointer;
+}
+
+#signup {
+  /* text-align: center;*/
+  border: 1px solid gray;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 10px 10px 10px 10px;
+  margin: 40px 40px 40px 40px;
+}
+
+.signupBtn {
+  margin-top: 35px;
+  font-size: 15px;
+  background-color: white;
+  color: black;
+  border: 2px solid #03bafc;
+  cursor: pointer;
+}
+
+#signupNoodle {
+  position: absolute;
+  right: 13%;
+  width: 80px;
+  height: 80px;
+}
+
+.googleSignup {
+  padding: 25px 0 0 15px;
+}
+
+.google {
+  padding: 10px;
+  padding-left: 55px;
+}
+
+.googleLink {
+  background-color: red;
+  color: white;
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
