@@ -52,7 +52,7 @@ export class GuestCart extends React.Component {
                 </div>
               ))}
           <div>Estimated Total: ${totalPrice}</div>
-          <Link to="/billingPage">
+          <Link to={totalPrice ? '/billingPage' : '#'}>
             <button type="submit" className="checkout-button">
               Checkout
             </button>
