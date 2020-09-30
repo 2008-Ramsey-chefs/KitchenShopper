@@ -27,7 +27,7 @@ export class GuestCart extends React.Component {
     if (this.props.cart) {
       return (
         <div id="cart-container">
-          <h1>Shopping Cart</h1>
+          <h1>Guest Shopping Cart</h1>
           {products.length === 0
             ? 'There are no items in your cart'
             : products.map(product => (

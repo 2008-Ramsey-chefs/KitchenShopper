@@ -18,7 +18,10 @@ describe('User model', () => {
       beforeEach(async () => {
         cody = await User.create({
           email: 'cody@puppybook.com',
-          password: 'bones'
+          password: 'bones',
+          firstName: 'cody',
+          lastName: 'banks',
+          address: '123 cherry st'
         })
       })
 
@@ -39,12 +42,18 @@ describe('User model', () => {
       beforeEach(async () => {
         cody = await User.create({
           email: 'cody@puppybook.com',
-          password: 'bones'
+          password: 'bones',
+          firstName: 'cody',
+          lastName: 'banks',
+          address: '123 cherry st'
         })
         mary = await User.create({
           email: 'mary@puppybook.com',
           password: '12345',
-          imageUrl: 'testImageUrl.png'
+          imageUrl: 'testImageUrl.png',
+          firstName: 'mary',
+          lastName: 'banks',
+          address: '123 cherry st'
         })
       })
       it('imageUrl is set to default value when none is provided', () => {
