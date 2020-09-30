@@ -27,33 +27,36 @@ export class GuestCart extends React.Component {
     if (this.props.cart) {
       return (
         <div id="cart-container">
-          <h1>Shopping Cart</h1>
+          <h1>Guest Shopping Cart</h1>
           {products.length === 0
             ? 'There are no items in your cart'
             : products.map(product => (
-                <div key={product.id}>
+                <div className="each-product-cart" key={product.id}>
+                  <img src={product.imageUrl} />
                   <div>NAME: {product.itemName}</div>
                   <div>PRICE: ${product.price}</div>
-                  <button
-                    onClick={evt => this.handleDeletion(evt, product)}
-                    type="submit"
-                    className="cart-button"
-                  >
-                    -
-                  </button>
-                  <span> {product.quantity} </span>
-                  <button
-                    onClick={evt => this.handleAdd(evt, product)}
-                    type="submit"
-                    className="cart-button"
-                  >
-                    +
-                  </button>
+                  <div>
+                    <button
+                      onClick={evt => this.handleDeletion(evt, product)}
+                      type="submit"
+                      className="w3-button w3-white w3-border w3-border-blue"
+                    >
+                      -
+                    </button>
+                    <span> {product.quantity} </span>
+                    <button
+                      onClick={evt => this.handleAdd(evt, product)}
+                      type="submit"
+                      className="w3-button w3-white w3-border w3-border-blue"
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
               ))}
           <div>Estimated Total: ${totalPrice}</div>
           <Link to="/billingPage">
-            <button type="submit" className="checkout-button">
+            <button className="checkout-button" type="submit">
               Checkout
             </button>
           </Link>

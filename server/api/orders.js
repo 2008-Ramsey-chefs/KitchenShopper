@@ -53,7 +53,7 @@ router.get('/cart', async (req, res, next) => {
       include: [
         {
           model: Product,
-          attributes: ['id', 'itemName', 'price']
+          attributes: ['id', 'itemName', 'price', 'imageUrl']
         }
       ],
       order: [['updatedAt', 'DESC']]
@@ -93,7 +93,7 @@ router.put('/:itemId', async (req, res, next) => {
         include: [
           {
             model: Product,
-            attributes: ['id', 'itemName', 'price']
+            attributes: ['id', 'itemName', 'price', 'imageUrl']
           }
         ],
         order: [['updatedAt', 'DESC']]
@@ -142,7 +142,7 @@ router.put('/:itemId/decrement', async (req, res, next) => {
         include: [
           {
             model: Product,
-            attributes: ['id', 'itemName', 'price']
+            attributes: ['id', 'itemName', 'price', 'imageUrl']
           }
         ],
         order: [['updatedAt', 'DESC']]
@@ -158,7 +158,7 @@ router.put('/:itemId/decrement', async (req, res, next) => {
         include: [
           {
             model: Product,
-            attributes: ['id', 'itemName', 'price']
+            attributes: ['id', 'itemName', 'price', 'imageUrl']
           }
         ],
         order: [['updatedAt', 'DESC']]
