@@ -55,8 +55,8 @@ export class GuestCart extends React.Component {
                 </div>
               ))}
           <div>Estimated Total: ${totalPrice}</div>
-          <Link to="/billingPage">
-            <button className="checkout-button" type="submit">
+          <Link to={totalPrice ? '/billingPage' : '#'}>
+            <button type="submit" className="checkout-button">
               Checkout
             </button>
           </Link>
