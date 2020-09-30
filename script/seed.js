@@ -13,7 +13,9 @@ async function seed() {
       lastName: 'Smith',
       email: 'cody@email.com',
       password: '123',
-      address: '64 Forest Street, New Milford, CT 06776'
+      address: '64 Forest Street, New Milford, CT 06776',
+      imageUrl:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTY0G6FRLOoQBe36BjGsswZnIr_c94FR5dbAA&usqp=CAU'
     }),
     User.create({
       firstName: 'Murphy',
