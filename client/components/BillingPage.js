@@ -45,12 +45,14 @@ export class BillingPage extends React.Component {
     }
 
     return (
-      <div>
+      <div className="confirm-order">
         <div> Thank you for shopping with us!</div>
         <div>Your order total is ${totalPrice}</div>
-        <button onClick={evt => this.handleSubmit(evt)} type="submit">
-          <Link to="/products">Confirm Order</Link>
-        </button>
+        <div>
+          <button onClick={evt => this.handleSubmit(evt)} type="submit">
+            <Link to="/products">Confirm Order</Link>
+          </button>
+        </div>
       </div>
     )
   }

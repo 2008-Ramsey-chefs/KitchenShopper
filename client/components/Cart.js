@@ -37,24 +37,27 @@ export class Cart extends React.Component {
           {cart.products.length === 0
             ? 'There are no items in your cart'
             : cart.products.map(product => (
-                <div key={product.id}>
+                <div className="each-product-cart" key={product.id}>
+                  <img src={product.imageUrl} />
                   <div>NAME: {product.itemName}</div>
                   <div>PRICE: ${product.price}</div>
-                  <button
-                    type="submit"
-                    onClick={evt => this.handleDeletion(evt, product.id)}
-                    className="cart-button"
-                  >
-                    -
-                  </button>
-                  <span> {product['order-product'].quantity} </span>
-                  <button
-                    onClick={evt => this.handleAddition(evt, product.id)}
-                    type="submit"
-                    className="cart-button"
-                  >
-                    +
-                  </button>
+                  <div>
+                    <button
+                      type="submit"
+                      onClick={evt => this.handleDeletion(evt, product.id)}
+                      className="w3-button w3-circle w3-grey"
+                    >
+                      -
+                    </button>
+                    <span> {product['order-product'].quantity} </span>
+                    <button
+                      onClick={evt => this.handleAddition(evt, product.id)}
+                      type="submit"
+                      className="w3-button w3-circle w3-grey"
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
               ))}
           <div>Estimated Total: ${totalPrice}</div>

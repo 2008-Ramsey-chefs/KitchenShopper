@@ -1,5 +1,6 @@
 body {
   font-family: sans-serif;
+  background-image: url('./One-Pot-Chicken-Parmesan-Pasta-5.jpg');
 }
 
 a {
@@ -39,7 +40,7 @@ img {
   align-items: center;
   flex: 1 1 20%;
   flex-direction: column;
-  border: 2px solid lightgray;
+  border: 2px solid black;
   width: 40%;
   padding: 15px 15px 15px 15px;
   margin: 40px 40px 40px 40px;
@@ -54,7 +55,7 @@ img {
 }
 
 #product-container > div {
-  border: 1px solid lightgray;
+  border: 1px solid rgb(6, 3, 56);
   padding: 10px 10px 10px 10px;
   margin: 40px 40px 40px 40px;
 }
@@ -67,8 +68,9 @@ img {
 
 #cart-container > div {
   padding: 10px 10px 10px 10px;
-  margin: 10px 10px 10px 10px;
+  margin: 10px 100px 10px 100px;
   border: 2px solid black;
+  align-items: center;
 }
 
 .button {
@@ -84,7 +86,7 @@ img {
   border-radius: 4px;
   padding: 5px 5px;
   font-size: 15px;
-  margin: 0 auto;
+  margin: 0 0 0 42%;
   width: 15%;
 }
 
@@ -99,4 +101,52 @@ h1 {
 
 link {
   cursor: pointer;
+}
+.each-product-cart {
+  display: flex;
+  flex-direction: column;
+}
+
+.each-product-cart > img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  flex-direction: row;
+}
+
+.each-product-cart > button {
+  width: 10%;
+}
+
+.confirm-order {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 40px 40px 40px 40px;
+  margin: 40px 40px 40px 40px;
+  align-items: center;
+}
+
+.confirm-order > div {
+  padding: 20px 20px 20px 20px;
+}
+
+.userprofile {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 40px 40px 40px 40px;
+  margin: 40px 40px 40px 40px;
+  align-items: center;
+}
+
+.userprofile > img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  flex-direction: row;
+}
+
+.userprofile > div {
+  padding: 20px 20px 20px 20px;
 }
