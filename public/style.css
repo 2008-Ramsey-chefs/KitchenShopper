@@ -40,7 +40,7 @@ img {
   align-items: center;
   flex: 1 1 20%;
   flex-direction: column;
-  border: 2px solid lightgray;
+  border: 2px solid black;
   width: 40%;
   padding: 15px 15px 15px 15px;
   margin: 40px 40px 40px 40px;
@@ -55,7 +55,7 @@ img {
 }
 
 #product-container > div {
-  border: 1px solid lightgray;
+  border: 1px solid rgb(6, 3, 56);
   padding: 10px 10px 10px 10px;
   margin: 40px 40px 40px 40px;
 }

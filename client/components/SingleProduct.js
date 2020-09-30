@@ -49,11 +49,7 @@ export class SingleProduct extends React.Component {
           <div>PRICE: ${product.price}</div>
           <div>QUANTITY: {quantity}</div>
           <div>DESCRIPTION: {product.description}</div>
-          <button
-            className="checkout-button"
-            type="submit"
-            onClick={this.guestHandleSubmit}
-          >
+          <button type="submit" onClick={this.guestHandleSubmit}>
             Add to Cart
           </button>
         </div>
