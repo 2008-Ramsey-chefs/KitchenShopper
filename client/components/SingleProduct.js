@@ -20,6 +20,7 @@ export class SingleProduct extends React.Component {
   }
   render() {
     const product = this.props.product
+
     if (!product) {
       return <div>The product you're looking for does not exist</div>
       // this if a user is logged in.
@@ -36,12 +37,17 @@ export class SingleProduct extends React.Component {
         </div>
       )
     } else {
-      //this is if they are a guest.
+      let quantity
+      if (this.props.guestCart[product.id])
+        quantity = this.props.guestCart[product.id].quantity
+      else quantity = 0
+
       return (
         <div id="single-product-container" key={product.id}>
           <img src={product.imageUrl} />
           <div>NAME: {product.itemName}</div>
           <div>PRICE: ${product.price}</div>
+          <div>QUANTITY: {quantity}</div>
           <div>DESCRIPTION: {product.description}</div>
           <button type="submit" onClick={this.guestHandleSubmit}>
             Add to Cart
@@ -54,7 +60,8 @@ export class SingleProduct extends React.Component {
 const mapState = state => {
   return {
     product: state.product,
-    user: state.user
+    user: state.user,
+    guestCart: state.guestCart
   }
 }
 
