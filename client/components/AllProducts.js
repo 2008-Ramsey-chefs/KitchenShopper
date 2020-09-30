@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import './AllProducts.css'
 import {fetchProducts} from '../store/products'
 import {Link} from 'react-router-dom'
 
@@ -13,7 +14,7 @@ export class AllProducts extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="body">
         <div id="product-container">
           {this.props.products.length === 0
             ? 'There are no products here!'
@@ -21,8 +22,8 @@ export class AllProducts extends React.Component {
                 <div key={product.id}>
                   <Link to={`/products/${product.id}`} key={product.id}>
                     <img src={product.imageUrl} />
-                    <div>NAME: {product.itemName}</div>
-                    <div>PRICE: ${product.price}</div>
+                    <div id="name">NAME: {product.itemName}</div>
+                    <div id="price">PRICE: ${product.price}</div>
                   </Link>
                 </div>
               ))}
